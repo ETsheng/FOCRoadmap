@@ -1,0 +1,11 @@
+--cpu Cortex-M3 -g
+-I.\RTE\_cubemx
+-I"D:\Program Files (x86)\keil_MDK537\ARM\CMSIS\5.9.0\CMSIS\Core\Include"
+-I"D:\Program Files (x86)\keil_MDK537\Keil\STM32F1xx_DFP\2.3.0\Device\Include"
+--pd "__UVISION_VERSION SETA 537"
+--pd "_RTE_ SETA 1"
+--pd "STM32F10X_MD SETA 1"
+--pd "_RTE_ SETA 1"
+--list startup_stm32f103xb.lst
+--xref -o cubemx\startup_stm32f103xb.o
+--depend cubemx\startup_stm32f103xb.d "startup_stm32f103xb.s"
