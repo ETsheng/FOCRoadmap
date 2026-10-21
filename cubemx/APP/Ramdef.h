@@ -3,6 +3,7 @@
 #define     __RAMDEF_H
 /***********************************************************/
 #include    "DataTypeDef.h"
+#include    "pid.h"
 #include    "MathUtils.h"
 /***********************************************************/
 typedef struct
@@ -39,6 +40,8 @@ typedef struct
     q_t     q_tData_Id;
     
     SVPWM_Data unSVPWM;
+    
+    q_t     y;
 }DebugData;
 /***********************************************************/
 extern DebugData   unDebug;

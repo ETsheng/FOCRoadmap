@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include    "Ramdef.h"
+#include    "pid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,6 +47,7 @@
 
 /* USER CODE BEGIN PV */
 DebugData   unDebug;
+PID_Handle  PID_Debug;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,6 +105,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+      PID_Init(&PID_Debug,Float2Q(0.5f),Float2Q(0.05f),0,Float2Q(1.0f),Float2Q(-1.0f));
+      PID_Debug_Step(&PID_Debug,Float2Q(0.8f));
   }
   /* USER CODE END 3 */
 }

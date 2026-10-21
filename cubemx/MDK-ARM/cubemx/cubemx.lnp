@@ -9,6 +9,7 @@
 "cubemx\system_stm32f1xx.o"
 "cubemx\sin_table.o"
 "cubemx\svpwm.o"
+"cubemx\pid.o"
 "cubemx\stm32f1xx_hal_gpio_ex.o"
 "cubemx\stm32f1xx_hal_adc.o"
 "cubemx\stm32f1xx_hal_adc_ex.o"

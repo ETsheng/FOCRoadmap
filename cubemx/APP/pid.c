@@ -1,5 +1,6 @@
 /***********************************************************/
 #include    "pid.h"
+#include    "Ramdef.h"
 /***********************************************************/
 void    PID_Init(PID_Handle *pL_pid,q_t kp, q_t ki, q_t kd, q_t out_max, q_t out_min)
 {
@@ -65,5 +66,15 @@ q_t     PID_Calc(PID_Handle *pL_pid, q_t Q_ref, q_t Q_fbk)
     return Q_Out;
 }
 /***********************************************************/
-
+void    PID_Debug_Step(PID_Handle *pid, q_t ref)
+{
+    static q_t y = 0;
+    q_t a = Float2Q(0.1f);
+    q_t u;
+    
+    u = PID_Calc(pid,ref,y);
+    y = y + Q_MUL(a,u-y);
+    
+    unDebug.y = y;
+}
 
