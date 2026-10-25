@@ -8,6 +8,11 @@
 /***********************************************************/
 typedef struct
 {
+    u8  F_TimeBase1ms;
+}Timer_Data;
+/***********************************************************/
+typedef struct
+{
     q_t Q_Ia;
     q_t Q_Ib;
     q_t Q_Ic;
@@ -42,9 +47,12 @@ typedef struct
     SVPWM_Data unSVPWM;
     
     q_t     y;
+    q_t     Ref;
+    
 }DebugData;
 /***********************************************************/
 extern DebugData   unDebug;
+extern Timer_Data  unTimerData;
 /***********************************************************/
 
 

@@ -69,12 +69,24 @@ q_t     PID_Calc(PID_Handle *pL_pid, q_t Q_ref, q_t Q_fbk)
 void    PID_Debug_Step(PID_Handle *pid, q_t ref)
 {
     static q_t y = 0;
+    static u32 step = 0;
+    static u8 LF_Time1ms;
     q_t a = Float2Q(0.1f);
-    q_t u;
+    q_t u = 0;
+
+    unDebug.Ref = ref;
     
-    u = PID_Calc(pid,ref,y);
-    y = y + Q_MUL(a,u-y);
-    
-    unDebug.y = y;
+    if(LF_Time1ms != unTimerData.F_TimeBase1ms)
+    {
+        LF_Time1ms = unTimerData.F_TimeBase1ms;
+        if(step <= 10000)
+        {
+            step++;
+            u = PID_Calc(pid,ref,y);
+            y = y + 0.01*(u-y);            
+            unDebug.y = y;
+            unDebug.u32Test1 = step;
+        }
+    }
 }
 
