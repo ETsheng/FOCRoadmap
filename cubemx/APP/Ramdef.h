@@ -5,6 +5,7 @@
 #include    "DataTypeDef.h"
 #include    "pid.h"
 #include    "MathUtils.h"
+#include    "pll.h"
 /***********************************************************/
 typedef struct
 {
@@ -53,6 +54,7 @@ typedef struct
 /***********************************************************/
 extern DebugData   unDebug;
 extern Timer_Data  unTimerData;
+extern PLL_Handle  unPLL;
 /***********************************************************/
 
 

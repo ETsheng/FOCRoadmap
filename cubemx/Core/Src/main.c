@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include    "Ramdef.h"
 #include    "pid.h"
+#include    "pll.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,6 +106,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+      PLL_Test();
   }
   /* USER CODE END 3 */
 }

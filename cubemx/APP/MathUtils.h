@@ -23,6 +23,17 @@ typedef     s64     q64_t;
 #define     ONE_OVER_SQRT3      Float2Q(0.5773502692f)
 #define     TWO_OVER_THREE      Float2Q(0.6666666667f)
 /***********************************************************/
+#define     ANGLE_MASK         ((1u << GLOBAL_Q_NUM) - 1)      // 0x00FFFFFF
+#define     ANGLE_90           (1u << (GLOBAL_Q_NUM - 2))      // 0x00400000
+#define     ANGLE_180          (1u << (GLOBAL_Q_NUM - 1))      // 0x00800000
+#define     ANGLE_270          (3u << (GLOBAL_Q_NUM - 2))      // 0x00C00000
+#define     ANGLE_360          (1u << GLOBAL_Q_NUM)            // 0x01000000
+#define     ANGLE_360          (1u << GLOBAL_Q_NUM)            // 0x01000000
+#define     ANGLE_60            ((q_t)(((u64)1u << GLOBAL_Q_NUM) / 6u))       // p/3
+#define     ANGLE_120           ((q_t)(((u64)1u << GLOBAL_Q_NUM) / 3u))       // 2p/3
+#define     ANGLE_240           ((q_t)(((u64)1u << GLOBAL_Q_NUM) * 2u / 3u))  // 4p/3
+#define     ANGLE_300           ((q_t)(((u64)1u << GLOBAL_Q_NUM) * 5u / 6u))  // 5p/3
+/***********************************************************/
 extern q_t get_sin(q_t angle);
 extern q_t get_cos(q_t angle);
 extern void sin_test(void);
@@ -57,6 +68,19 @@ static inline void park(q_t i_alpha, q_t i_beta, q_t angle,
 
     *i_d = Qmul(i_alpha, c) + Qmul(i_beta,  s);
     *i_q = Qmul(i_beta,  c) - Qmul(i_alpha, s);
+}
+/***********************************************************/
+static inline void ipark(q_t v_d, q_t v_q, q_t angle,q_t *v_alpha, q_t *v_beta)
+{
+    q_t QL_Sin = get_sin(angle);
+    q_t QL_Cos = get_cos(angle);
+    
+    // Inverse Park
+    // Valpha = Vd*cos(theta) - Vq*sin(theta)
+    // Vbeta  = Vd*sin(theta) + Vq*cos(theta)
+    
+    *v_alpha = Qmul(v_d, QL_Cos) - Qmul(v_q,QL_Sin);
+    *v_beta = Qmul(v_d, QL_Sin) + Qmul(v_q,QL_Cos);
 }
 /***********************************************************/
 #endif

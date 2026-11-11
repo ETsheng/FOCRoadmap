@@ -6,16 +6,7 @@
 #define     SIN_TABLE_SIZE      256
 #define     SIN_TABLE_LAST     (SIN_TABLE_SIZE - 1)
 /***********************************************************/
-#define     ANGLE_MASK         ((1u << GLOBAL_Q_NUM) - 1)      // 0x00FFFFFF
-#define     ANGLE_90           (1u << (GLOBAL_Q_NUM - 2))      // 0x00400000
-#define     ANGLE_180          (1u << (GLOBAL_Q_NUM - 1))      // 0x00800000
-#define     ANGLE_270          (3u << (GLOBAL_Q_NUM - 2))      // 0x00C00000
-#define     ANGLE_360          (1u << GLOBAL_Q_NUM)            // 0x01000000
-#define     ANGLE_360          (1u << GLOBAL_Q_NUM)            // 0x01000000
-#define     ANGLE_60            ((q_t)(((u64)1u << GLOBAL_Q_NUM) / 6u))       // p/3
-#define     ANGLE_120           ((q_t)(((u64)1u << GLOBAL_Q_NUM) / 3u))       // 2p/3
-#define     ANGLE_240           ((q_t)(((u64)1u << GLOBAL_Q_NUM) * 2u / 3u))  // 4p/3
-#define     ANGLE_300           ((q_t)(((u64)1u << GLOBAL_Q_NUM) * 5u / 6u))  // 5p/3
+
 
 #define     ANGLE_INDEX_SHIFT   (GLOBAL_Q_NUM - 2 - 8)      // 8bits table + 2bits stand for 0-pi/2 + pi/2-pi
 #define     ANGLE_FRAC_MASK     ((1 << ANGLE_INDEX_SHIFT) - 1)
