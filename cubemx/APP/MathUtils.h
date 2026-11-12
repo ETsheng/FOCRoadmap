@@ -19,6 +19,10 @@ typedef     s64     q64_t;
 #define     Q_MUL(a,b)      ((q_t)(((q64_t)(a) * (q64_t)(b)) >> GLOBAL_Q_NUM))
 #define     Q_DIV(a, b)     ((q_t)((((q64_t)(a)) << GLOBAL_Q_NUM) / (q64_t)(b)))
 /***********************************************************/
+#define		C_PI				(3.1415926f)
+#define		C_2PI				(2*C_PI)
+#define		C_Q_PI				Float2Q(3.1415926f)
+#define		C_Q_2PI				Float2Q(6.2831853f)
 #define     SQRT3               Float2Q(1.7320508076f)
 #define     ONE_OVER_SQRT3      Float2Q(0.5773502692f)
 #define     TWO_OVER_THREE      Float2Q(0.6666666667f)
