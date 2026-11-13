@@ -11,6 +11,7 @@ void	PLL_Init(PLL_Handle *pll, q_t kp, q_t ki)
 
 	pll->Q_Speed = 0;
 	pll->Q_Theta = 0;
+    pll->Q_SpeedFlt = 0;
 }
 /*****************************************************************/
 void	PLL_Reset(PLL_Handle *pll, q_t init_theta)
@@ -18,6 +19,7 @@ void	PLL_Reset(PLL_Handle *pll, q_t init_theta)
 	PID_Reset(&(pll->unPID));
 	pll->Q_Theta = init_theta;
 	pll->Q_Speed = 0;
+    pll->Q_SpeedFlt = 0;
 }
 /*****************************************************************/
 void	PLL_Update(PLL_Handle *pll, q_t Q_Ealpha, q_t Q_Ebeta)
@@ -31,6 +33,7 @@ void	PLL_Update(PLL_Handle *pll, q_t Q_Ealpha, q_t Q_Ebeta)
     
     // calc speed
     pll->Q_Speed = PID_Calc(&(pll->unPID),0,Q_err);
+    pll->Q_SpeedFlt += Q_MUL(C_Q_PLL_SPD_LPF, pll->Q_Speed - pll->Q_SpeedFlt);
     
     // integrate for theta
     pll->Q_Theta = (q_t)(((u32)pll->Q_Theta + (u32)pll->Q_Speed) & ANGLE_MASK);

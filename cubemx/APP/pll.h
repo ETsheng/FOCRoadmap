@@ -11,6 +11,7 @@ typedef struct
 	
 	q_t		Q_Theta;
 	q_t		Q_Speed;
+    q_t     Q_SpeedFlt;
     
     q_t     Q_GenTheta;
     q_t     Q_GenSpeed;
