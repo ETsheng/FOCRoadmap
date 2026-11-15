@@ -97,6 +97,7 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_ADCEx_Calibration_Start(&hadc1);
 	HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
@@ -108,7 +109,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 //      PLL_Test();
-      SMO_Test_Run();
+//      SMO_Test_Run();
+      ADC_VBus_Poll();
   }
   /* USER CODE END 3 */
 }
