@@ -64,11 +64,10 @@ void Error_Handler(void);
 #define V_CurrentPin_GPIO_Port GPIOA
 #define U_CurrentPin_Pin GPIO_PIN_2
 #define U_CurrentPin_GPIO_Port GPIOA
-#define VBUS_AD_Pin GPIO_PIN_4
+#define VBUS_AD_Pin GPIO_PIN_3
 #define VBUS_AD_GPIO_Port GPIOA
-#define OC_FAULT_Pin GPIO_PIN_5
+#define OC_FAULT_Pin GPIO_PIN_4
 #define OC_FAULT_GPIO_Port GPIOA
-#define OC_FAULT_EXTI_IRQn EXTI9_5_IRQn
 #define PWM_WL_Pin GPIO_PIN_7
 #define PWM_WL_GPIO_Port GPIOA
 #define PWM_VL_Pin GPIO_PIN_0

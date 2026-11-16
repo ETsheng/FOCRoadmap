@@ -98,6 +98,15 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_ADCEx_Calibration_Start(&hadc1);
+  if(READ_BIT(ADC1->CR2,ADC_CR2_ADON) == 0)
+  {
+	__HAL_ADC_ENABLE(&hadc1);
+  }
+  __HAL_ADC_DISABLE_IT(&hadc1,ADC_IT_JEOC);
+  __HAL_ADC_ENABLE_IT(&hadc1,ADC_IT_EOC);
+  
+  __HAL_ADC_CLEAR_FLAG(&hadc1,ADC_FLAG_EOC|ADC_FLAG_JEOC);
+  
 	HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
@@ -110,7 +119,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 //      PLL_Test();
 //      SMO_Test_Run();
-      ADC_VBus_Poll();
   }
   /* USER CODE END 3 */
 }

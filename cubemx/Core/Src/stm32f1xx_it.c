@@ -217,20 +217,6 @@ void ADC1_2_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles EXTI line[9:5] interrupts.
-  */
-void EXTI9_5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-
-  /* USER CODE END EXTI9_5_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(OC_FAULT_Pin);
-  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
-  /* USER CODE END EXTI9_5_IRQn 1 */
-}
-
-/**
   * @brief This function handles TIM1 break interrupt.
   */
 void TIM1_BRK_IRQHandler(void)
@@ -277,7 +263,8 @@ void TIM2_IRQHandler(void)
 		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 	}
     
-    ADC_VBUS_Start();
+	// VBUS ADC
+    HAL_ADC_Start_IT(&hadc1);
 	
   /* USER CODE END TIM2_IRQn 1 */
 }
