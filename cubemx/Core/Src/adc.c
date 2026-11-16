@@ -195,35 +195,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 /* USER CODE BEGIN 1 */
 void ADC_VBUS_Start(void)
 {
-    if(unADC.F_VBusPending)
-    {
-        return;
-    }
-    
-    unADC.F_VBusPending = 1;
-    
     HAL_ADC_Start(&hadc1);
 }
-
-void ADC_VBus_Poll(void)
-{
-    if(!unADC.F_VBusPending)
-    {
-        return;
-    }
-    
-    if(HAL_ADC_PollForConversion(&hadc1,2) == HAL_OK)
-    {
-        unADC.u16_VBusAD = (u16)HAL_ADC_GetValue(&hadc1);
-    }
-    else
-    {
-        HAL_ADC_Stop(&hadc1);
-    }
-    
-    unADC.F_VBusPending = 0;
-}
-
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	if(hadc->Instance == ADC1)

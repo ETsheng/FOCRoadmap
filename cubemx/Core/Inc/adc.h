@@ -30,9 +30,7 @@ extern "C" {
 
 /* USER CODE BEGIN Includes */
 typedef struct
-{
-    u8      F_VBusPending;
-    
+{    
     u16     u16_VBusAD;
     u16     u16_CurrentU;
     u16     u16_CurrentV;
@@ -50,7 +48,6 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 extern void ADC_VBUS_Start(void);
-extern void ADC_VBus_Poll(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
