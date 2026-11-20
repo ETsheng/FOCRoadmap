@@ -32,9 +32,14 @@ extern "C" {
 typedef struct
 {    
     u16     u16_VBusAD;
-    u16     u16_CurrentU;
-    u16     u16_CurrentV;
-    u16     u16_CurrentW;
+	
+	u16		u16_ADOffset_U;
+	u16		u16_ADOffset_V;
+	u16		u16_ADOffset_W;
+	
+    u16     u16_AD_CurrentU;
+    u16     u16_AD_CurrentV;
+    u16     u16_AD_CurrentW;
 }ADCData;
 /* USER CODE END Includes */
 
@@ -48,6 +53,7 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 extern void ADC_VBUS_Start(void);
+extern void ADC_OffsetSub(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

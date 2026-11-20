@@ -36,7 +36,6 @@ void MX_TIM1_Init(void)
   /* USER CODE END TIM1_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
@@ -61,12 +60,6 @@ void MX_TIM1_Init(void)
     Error_Handler();
   }
   if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_TRIGGER;
-  sSlaveConfig.InputTrigger = TIM_TS_ITR1;
-  if (HAL_TIM_SlaveConfigSynchro(&htim1, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
   }
@@ -96,6 +89,7 @@ void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM2;
+  sConfigOC.Pulse = 3200-16;
   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
   {
     Error_Handler();
@@ -170,9 +164,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
     __HAL_RCC_TIM1_CLK_ENABLE();
 
     /* TIM1 interrupt Init */
-    HAL_NVIC_SetPriority(TIM1_BRK_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(TIM1_BRK_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(TIM1_BRK_IRQn);
-    HAL_NVIC_SetPriority(TIM1_UP_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(TIM1_UP_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(TIM1_UP_IRQn);
   /* USER CODE BEGIN TIM1_MspInit 1 */
 
@@ -187,7 +181,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
     __HAL_RCC_TIM2_CLK_ENABLE();
 
     /* TIM2 interrupt Init */
-    HAL_NVIC_SetPriority(TIM2_IRQn, 1, 0);
+    HAL_NVIC_SetPriority(TIM2_IRQn, 2, 0);
     HAL_NVIC_EnableIRQ(TIM2_IRQn);
   /* USER CODE BEGIN TIM2_MspInit 1 */
 

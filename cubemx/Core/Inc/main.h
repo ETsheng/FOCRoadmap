@@ -68,6 +68,7 @@ void Error_Handler(void);
 #define VBUS_AD_GPIO_Port GPIOA
 #define OC_FAULT_Pin GPIO_PIN_4
 #define OC_FAULT_GPIO_Port GPIOA
+#define OC_FAULT_EXTI_IRQn EXTI4_IRQn
 #define PWM_WL_Pin GPIO_PIN_7
 #define PWM_WL_GPIO_Port GPIOA
 #define PWM_VL_Pin GPIO_PIN_0

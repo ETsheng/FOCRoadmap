@@ -12,6 +12,7 @@
 "cubemx\pid.o"
 "cubemx\pll.o"
 "cubemx\smo.o"
+"cubemx\foc_fsm.o"
 "cubemx\stm32f1xx_hal_gpio_ex.o"
 "cubemx\stm32f1xx_hal_adc.o"
 "cubemx\stm32f1xx_hal_adc_ex.o"
